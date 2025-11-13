@@ -90,9 +90,9 @@ jobs:
 
       - name: Restore credentials from secrets
         env:
-          TDL_TEST_CREDENTIALS: ${{ secrets.TDL_TEST_CREDENTIALS }}
+          TG_CREDENTIALS: ${{ secrets.TG_CREDENTIALS }}
         run: |
-          echo "$TDL_TEST_CREDENTIALS" > test/test.json
+          echo "$TG_CREDENTIALS" > test/test.json
           chmod 600 test/test.json
 
       - name: E2E Test

@@ -10,15 +10,16 @@ cd tools
 go run export_credentials.go -namespace default -output ../test/test.json
 
 # 2. Run tests
-cd ../test
-TDL_TEST_CREDENTIALS_FILE=test.json go test ./... -v
-```
-
-Or from project root:
-
-```bash
+cd ..
 TDL_TEST_CREDENTIALS_FILE=$(pwd)/test/test.json go test ./test/... -v
 ```
+
+## GitHub Actions
+
+E2E tests run via `.github/workflows/e2e.yml`:
+
+- **Trigger**: Comment `/e2e` on PR (requires write permission) or manual run
+- **Credentials**: Stored in `secrets.TG_CREDENTIALS`
 
 ## Security
 
