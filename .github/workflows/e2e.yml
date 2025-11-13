@@ -92,12 +92,12 @@ jobs:
         env:
           TG_CREDENTIALS: ${{ secrets.TG_CREDENTIALS }}
         run: |
-          echo "$TG_CREDENTIALS" > test/test.json
-          chmod 600 test/test.json
+          echo "$TG_CREDENTIALS" > test/credentials.json
+          chmod 600 test/credentials.json
 
       - name: E2E Test
         env:
-          TDL_TEST_CREDENTIALS_FILE: ${{ github.workspace }}/test/test.json
+          TDL_TEST_CREDENTIALS_FILE: ${{ github.workspace }}/test/credentials.json
         run: ginkgo -v -r ./test
 
       - name: Comment result on PR
