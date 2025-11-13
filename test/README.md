@@ -7,11 +7,11 @@ End-to-end tests for tdl using exported credentials.
 ```bash
 # 1. Export credentials
 cd tools
-go run export_credentials.go -namespace default -output ../test/test.json
+go run export_credentials.go -namespace default -output ../test/credentials.json
 
 # 2. Run tests
 cd ..
-TDL_TEST_CREDENTIALS_FILE=$(pwd)/test/test.json go test ./test/... -v
+TDL_TEST_CREDENTIALS_FILE=$(pwd)/test/credentials.json go test ./test/... -v
 ```
 
 ## GitHub Actions
@@ -23,5 +23,4 @@ E2E tests run via `.github/workflows/e2e.yml`:
 
 ## Security
 
-- `test.json` is in `.gitignore`
 - Never commit credentials to version control
