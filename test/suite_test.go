@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"testing"
+	"time"
 
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
@@ -48,6 +49,11 @@ var _ = BeforeSuite(func(ctx context.Context) {
 
 var _ = BeforeEach(func() {
 	cmd = tcmd.New()
+})
+
+var _ = AfterEach(func() {
+	// Add 1 second delay between tests to avoid rate limiting
+	time.Sleep(1 * time.Second)
 })
 
 func exec(cmd *cobra.Command, args []string, success bool) {
