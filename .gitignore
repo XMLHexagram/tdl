@@ -7,3 +7,7 @@ downloads
 tdl
 .hugo_build.lock
 .DS_Store
+
+# E2E test credentials and session files
+test/.env
+test/.env.local
