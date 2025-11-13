@@ -57,11 +57,12 @@ jobs:
   # Run E2E tests
   e2e-test:
     runs-on: ubuntu-22.04
-    needs: check-trigger
+    needs: [check-trigger]
     environment: Main
     if: |
-      github.event_name == 'workflow_dispatch' ||
-      needs.check-trigger.outputs.should-run == 'true'
+      always() &&
+      (github.event_name == 'workflow_dispatch' ||
+       needs.check-trigger.outputs.should-run == 'true')
     steps:
       - name: Add reaction
         if: github.event_name == 'issue_comment'
